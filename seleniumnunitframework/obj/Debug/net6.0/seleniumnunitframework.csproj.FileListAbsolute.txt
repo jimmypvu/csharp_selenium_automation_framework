@@ -1,0 +1,5 @@
+C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\seleniumnunitframework\obj\Debug\net6.0\seleniumnunitframework.csproj.AssemblyReference.cache
+C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\seleniumnunitframework\obj\Debug\net6.0\seleniumnunitframework.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\seleniumnunitframework\obj\Debug\net6.0\seleniumnunitframework.AssemblyInfoInputs.cache
+C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\seleniumnunitframework\obj\Debug\net6.0\seleniumnunitframework.AssemblyInfo.cs
+C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\seleniumnunitframework\obj\Debug\net6.0\seleniumnunitframework.csproj.CoreCompileInputs.cache
