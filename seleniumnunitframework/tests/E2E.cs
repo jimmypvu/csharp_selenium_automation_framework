@@ -14,6 +14,9 @@ namespace seleniumnunitframework.tests
             Console.WriteLine(GetDriver().Url);
             Wait().Until(ExpectedConditions.ElementIsVisible(By.CssSelector("textarea[title='Search']")));
             Wait().Until(ExpectedConditions.UrlContains("google"));
+            Wait().Until(ExpectedConditions.TitleContains("Google"));
+            ScrollToEnd();
+
         }
 
         [Test]
@@ -23,6 +26,9 @@ namespace seleniumnunitframework.tests
             Console.WriteLine(GetDriver().Url);
             Wait().Until(ExpectedConditions.ElementIsVisible(By.CssSelector("textarea[id='sb_form_q']")));
             Wait().Until(ExpectedConditions.UrlContains("bing"));
+            Wait().Until(ExpectedConditions.TitleContains("Bing"));
+            ScrollToEnd();
+
         }
 
         [Test]
@@ -32,6 +38,9 @@ namespace seleniumnunitframework.tests
             Console.WriteLine(GetDriver().Url);
             Wait().Until(ExpectedConditions.ElementIsVisible(By.CssSelector("input#searchbox_input")));
             Wait().Until(ExpectedConditions.UrlContains("duck"));
+            Wait().Until(ExpectedConditions.TitleContains("DuckDuckGo"));
+            ScrollToEnd();
+
         }
 
         [Test]
@@ -41,6 +50,9 @@ namespace seleniumnunitframework.tests
             Console.WriteLine(GetDriver().Url);
             Wait().Until(ExpectedConditions.ElementIsVisible(By.CssSelector("input#ybar-sbq")));
             Wait().Until(ExpectedConditions.UrlContains("yahoo"));
+            Wait().Until(ExpectedConditions.TitleContains("Yahoo"));
+            ScrollToEnd();
+
         }
 
         [Test]
@@ -50,6 +62,9 @@ namespace seleniumnunitframework.tests
             Console.WriteLine(GetDriver().Url);
             Wait().Until(ExpectedConditions.ElementIsVisible(By.CssSelector("input#header-search-bar")));
             Wait().Until(ExpectedConditions.UrlContains("reddit"));
+            Wait().Until(ExpectedConditions.TitleContains("Reddit"));
+            ScrollToEnd();
+
         }
 
         [Test]
@@ -59,6 +74,9 @@ namespace seleniumnunitframework.tests
             Console.WriteLine(GetDriver().Url);
             Wait().Until(ExpectedConditions.ElementIsVisible(By.CssSelector("input[aria-label='Search']")));
             Wait().Until(ExpectedConditions.UrlContains("ask"));
+            Wait().Until(ExpectedConditions.TitleContains("Ask"));
+            ScrollToEnd();
+
         }
 
         [Test]
@@ -68,6 +86,8 @@ namespace seleniumnunitframework.tests
             Console.WriteLine(GetDriver().Url);
             Wait().Until(ExpectedConditions.ElementIsVisible(By.CssSelector("input#search")));
             Wait().Until(ExpectedConditions.UrlContains("youtube"));
+            Wait().Until(ExpectedConditions.TitleContains("YouTube"));
+            ScrollToEnd();
         }
     }
 }

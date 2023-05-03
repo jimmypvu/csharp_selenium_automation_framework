@@ -16,9 +16,13 @@ namespace seleniumnunitframework
 
         private ThreadLocal<WebDriverWait> ThreadWait = new ThreadLocal<WebDriverWait>();
 
-        protected Actions act;
+        private ThreadLocal<Actions> ThreadActions = new ThreadLocal<Actions>();
 
-        protected IJavaScriptExecutor jse;
+        private ThreadLocal<IJavaScriptExecutor> ThreadJS = new ThreadLocal<IJavaScriptExecutor>();
+
+        //protected Actions act;
+
+        //protected IJavaScriptExecutor jse;
 
         private readonly string BaseUrl = ConfigurationManager.AppSettings["baseurl"];
 
@@ -35,11 +39,13 @@ namespace seleniumnunitframework
             ThreadWait.Value = new WebDriverWait(GetDriver(), TimeSpan.FromSeconds(10));
             ThreadWait.Value.PollingInterval = TimeSpan.FromMilliseconds(250);
 
+            ThreadJS.Value = (IJavaScriptExecutor)GetDriver();
+
+            ThreadActions.Value = new Actions(GetDriver());
+
             GetDriver().Url = BaseUrl;
 
-            //act = new Actions(GetDriver());
-
-            //jse = (IJavaScriptExecutor)GetDriver();
+            WaitForPageLoad();
         }
 
         [TearDown]
@@ -54,6 +60,8 @@ namespace seleniumnunitframework
         {
             ThreadDriver.Dispose();
             ThreadWait.Dispose();
+            ThreadActions.Dispose();
+            ThreadJS.Dispose();
         }
 
         public IWebDriver SetDriver(string browserName)
@@ -94,11 +102,41 @@ namespace seleniumnunitframework
             return ThreadWait.Value;
         }
 
+        public IJavaScriptExecutor Js()
+        {
+            return ThreadJS.Value;
+        }
+
+        public Actions Act()
+        {
+            return ThreadActions.Value;
+        }
+
         public void ManageBrowser(IWebDriver driver)
         {
             driver.Manage().Window.Maximize();
             driver.Manage().Cookies.DeleteAllCookies();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+        }
+
+        public bool IsPageLoadComplete()
+        {
+            return Js().ExecuteScript("return document.readyState").Equals("complete");
+        }
+
+        public void WaitForPageLoad()
+        {
+            bool pageLoadComplete = false;
+
+            do
+            {
+                pageLoadComplete = IsPageLoadComplete();
+            } while (!pageLoadComplete);
+        }
+
+        public void ScrollToEnd()
+        {
+            Js().ExecuteScript("window.scrollTo(0,document.body.scrollHeight)");
         }
     }
 }
