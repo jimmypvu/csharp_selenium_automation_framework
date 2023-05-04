@@ -1,30 +1,32 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Edge;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Support.UI;
+using SeleniumNUnitFramework.Utils;
 using System.Configuration;
-using WebDriverManager.DriverConfigs.Impl;
 
-namespace seleniumnunitframework
+namespace SeleniumNUnitFramework
 {
     [TestFixture]
     internal class BaseTest
     {
         private ThreadLocal<IWebDriver> ThreadDriver = new ThreadLocal<IWebDriver>();
-
         private readonly string BaseUrl = ConfigurationManager.AppSettings["baseurl"];
 
+
+        [OneTimeSetUp]
+        public void SetupThreads() 
+        {
+            ThreadManager.SetupThreads();
+        }
 
         [SetUp]
         public void SetupAndLaunchBrowser()
         {
+            ThreadManager.GetSemaphore().WaitOne();
+
             string browser = ConfigurationManager.AppSettings.Get("browser");
 
             ThreadDriver.Value = SetDriver(browser);
 
-            ManageBrowser(GetDriver());
+            ManageBrowserSettings(GetDriver());
 
             GetDriver().Url = BaseUrl;
         }
@@ -34,12 +36,14 @@ namespace seleniumnunitframework
         {
             ThreadDriver.Value.Quit();
             ThreadDriver.Value.Dispose();
+            ThreadManager.GetSemaphore().Release();
         }
 
         [OneTimeTearDown]
         public void ThreadCleanup()
         {
             ThreadDriver.Dispose();
+            ThreadManager.GetSemaphore().Dispose();
         }
 
         public IWebDriver SetDriver(string browserName)
@@ -49,25 +53,11 @@ namespace seleniumnunitframework
             switch (browserName)
             {
                 case "firefox":
-                        new WebDriverManager.DriverManager().SetUpDriver(new FirefoxConfig());
-                        FirefoxOptions fo = new FirefoxOptions();
-                        fo.AddArgument("-width=1920");
-                        fo.AddArgument("-height=1080");
-                        fo.AddArgument("--headless");
-                        return driver = new FirefoxDriver(fo);
+                        return driver = BrowserManager.GetFirefoxDriver();
                 case "edge":
-                        new WebDriverManager.DriverManager().SetUpDriver(new EdgeConfig());
-                        EdgeOptions eo = new EdgeOptions();
-                        eo.AddArgument("--window-size=1920,1080");
-                        eo.AddArgument("--headless");
-                        return driver = new EdgeDriver(eo);
+                        return driver = BrowserManager.GetEdgeDriver();
                 default:
-                        new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
-                        ChromeOptions co = new ChromeOptions();
-                        co.AddArgument("--window-size=1920,1080");
-                        //co.AddArgument("--headless");
-                        co.AddArgument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36");
-                        return driver = new ChromeDriver(co);
+                        return driver = BrowserManager.GetChromeDriver();
             }
         }
 
@@ -76,7 +66,7 @@ namespace seleniumnunitframework
             return ThreadDriver.Value;
         }
 
-        public void ManageBrowser(IWebDriver driver)
+        public void ManageBrowserSettings(IWebDriver driver)
         {
             driver.Manage().Window.Maximize();
             driver.Manage().Cookies.DeleteAllCookies();

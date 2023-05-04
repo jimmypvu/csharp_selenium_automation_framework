@@ -1,9 +1,7 @@
 ﻿using SeleniumExtras.WaitHelpers;
-using OpenQA.Selenium;
-using seleniumnunitframework.pages;
-using System.Runtime.Intrinsics.Arm;
+using SeleniumNUnitFramework.Pages;
 
-namespace seleniumnunitframework.tests
+namespace SeleniumNUnitFramework.Tests
 {
     [TestFixture]
     [Parallelizable(ParallelScope.All)]
@@ -26,12 +24,6 @@ namespace seleniumnunitframework.tests
             gp.Wait.Until(ExpectedConditions.ElementIsVisible(gp.LocSearchBar));
 
             Assert.That(gp.SearchBar.Displayed);
-
-            //Console.WriteLine(GetDriver().Url);
-            //Wait().Until(ExpectedConditions.ElementIsVisible(By.CssSelector("textarea[title='Search']")));
-            //Wait().Until(ExpectedConditions.UrlContains("google"));
-            //Wait().Until(ExpectedConditions.TitleContains("Google"));
-            //ScrollToEnd();
         }
 
         [Test]
@@ -51,13 +43,6 @@ namespace seleniumnunitframework.tests
             bp.Wait.Until(ExpectedConditions.ElementIsVisible(bp.LocSearchBar));
 
             Assert.That(bp.SearchBar.Displayed);
-
-            //GetDriver().Url = "https://www.bing.com/";
-            //Console.WriteLine(GetDriver().Url);
-            //Wait().Until(ExpectedConditions.ElementIsVisible(By.CssSelector("textarea[id='sb_form_q']")));
-            //Wait().Until(ExpectedConditions.UrlContains("bing"));
-            //Wait().Until(ExpectedConditions.TitleContains("Bing"));
-            //ScrollToEnd();
         }
 
         [Test]
@@ -66,6 +51,8 @@ namespace seleniumnunitframework.tests
             DdgHomePage dp = new DdgHomePage(GetDriver());
             dp.Driver.Url = "https://duckduckgo.com/";
             Console.WriteLine(dp.Driver.Url);
+
+            //string getNetworkLogsScript = "let performance = window.performance || window.mozPerformance || window.msPerformance || window.webkitPerformance || {}; let network = performance.getEntries() || {}; return network;";
 
             dp.WaitForPageLoad();
             dp.ScrollToEnd();
@@ -77,13 +64,6 @@ namespace seleniumnunitframework.tests
             dp.Wait.Until(ExpectedConditions.ElementIsVisible(dp.LocSearchBar));
 
             Assert.That(dp.SearchBar.Displayed);
-
-            //GetDriver().Url = "https://duckduckgo.com/";
-            //Console.WriteLine(GetDriver().Url);
-            //Wait().Until(ExpectedConditions.ElementIsVisible(By.CssSelector("input#searchbox_input")));
-            //Wait().Until(ExpectedConditions.UrlContains("duck"));
-            //Wait().Until(ExpectedConditions.TitleContains("DuckDuckGo"));
-            //ScrollToEnd();
         }
 
         [Test]
@@ -103,13 +83,6 @@ namespace seleniumnunitframework.tests
             yp.Wait.Until(ExpectedConditions.ElementIsVisible(yp.LocSearchBar));
 
             Assert.That(yp.SearchBar.Displayed);
-
-            //GetDriver().Url = "https://www.yahoo.com/";
-            //Console.WriteLine(GetDriver().Url);
-            //Wait().Until(ExpectedConditions.ElementIsVisible(By.CssSelector("input#ybar-sbq")));
-            //Wait().Until(ExpectedConditions.UrlContains("yahoo"));
-            //Wait().Until(ExpectedConditions.TitleContains("Yahoo"));
-            //ScrollToEnd();
         }
 
         [Test]
@@ -129,13 +102,6 @@ namespace seleniumnunitframework.tests
             rp.Wait.Until(ExpectedConditions.ElementIsVisible(rp.LocSearchBar));
 
             Assert.That(rp.SearchBar.Displayed);
-
-            //GetDriver().Url = "https://www.reddit.com/";
-            //Console.WriteLine(GetDriver().Url);
-            //Wait().Until(ExpectedConditions.ElementIsVisible(By.CssSelector("input#header-search-bar")));
-            //Wait().Until(ExpectedConditions.UrlContains("reddit"));
-            //Wait().Until(ExpectedConditions.TitleContains("Reddit"));
-            //ScrollToEnd();
         }
 
         [Test]
@@ -155,13 +121,6 @@ namespace seleniumnunitframework.tests
             ap.Wait.Until(ExpectedConditions.ElementIsVisible(ap.LocSearchBar));
 
             Assert.That(ap.SearchBar.Displayed);
-
-            //GetDriver().Url = "https://www.ask.com/";
-            //Console.WriteLine(GetDriver().Url);
-            //Wait().Until(ExpectedConditions.ElementIsVisible(By.CssSelector("input[aria-label='Search']")));
-            //Wait().Until(ExpectedConditions.UrlContains("ask"));
-            //Wait().Until(ExpectedConditions.TitleContains("Ask"));
-            //ScrollToEnd();
         }
 
         [Test]
@@ -181,13 +140,6 @@ namespace seleniumnunitframework.tests
             yp.Wait.Until(ExpectedConditions.ElementIsVisible(yp.LocSearchBar));
 
             Assert.That(yp.SearchBar.Displayed);
-
-            //GetDriver().Url = "https://www.youtube.com/";
-            //Console.WriteLine(GetDriver().Url);
-            //Wait().Until(ExpectedConditions.ElementIsVisible(By.CssSelector("input#search")));
-            //Wait().Until(ExpectedConditions.UrlContains("youtube"));
-            //Wait().Until(ExpectedConditions.TitleContains("YouTube"));
-            //ScrollToEnd();
         }
     }
 }

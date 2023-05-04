@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 
-namespace seleniumnunitframework.pages
+namespace SeleniumNUnitFramework.Pages
 {
     internal class YahooHomePage : BasePage
     {

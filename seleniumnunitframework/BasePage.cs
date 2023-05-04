@@ -3,7 +3,7 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 
-namespace seleniumnunitframework
+namespace SeleniumNUnitFramework
 {
     internal class BasePage
     {

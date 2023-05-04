@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jimmy\\OneDrive\\Desktop\\code\\csharpseleniumnunitautomationframework\\seleniumnunitframework\\seleniumnunitframework.csproj": {}
+    "C:\\Users\\jimmy\\OneDrive\\Desktop\\code\\csharpseleniumnunitautomationframework\\seleniumnunitframework\\SeleniumNUnitFramework.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jimmy\\OneDrive\\Desktop\\code\\csharpseleniumnunitautomationframework\\seleniumnunitframework\\seleniumnunitframework.csproj": {
+    "C:\\Users\\jimmy\\OneDrive\\Desktop\\code\\csharpseleniumnunitautomationframework\\seleniumnunitframework\\SeleniumNUnitFramework.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jimmy\\OneDrive\\Desktop\\code\\csharpseleniumnunitautomationframework\\seleniumnunitframework\\seleniumnunitframework.csproj",
-        "projectName": "seleniumnunitframework",
-        "projectPath": "C:\\Users\\jimmy\\OneDrive\\Desktop\\code\\csharpseleniumnunitautomationframework\\seleniumnunitframework\\seleniumnunitframework.csproj",
+        "projectUniqueName": "C:\\Users\\jimmy\\OneDrive\\Desktop\\code\\csharpseleniumnunitautomationframework\\seleniumnunitframework\\SeleniumNUnitFramework.csproj",
+        "projectName": "SeleniumNUnitFramework",
+        "projectPath": "C:\\Users\\jimmy\\OneDrive\\Desktop\\code\\csharpseleniumnunitautomationframework\\seleniumnunitframework\\SeleniumNUnitFramework.csproj",
         "packagesPath": "C:\\Users\\jimmy\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\jimmy\\OneDrive\\Desktop\\code\\csharpseleniumnunitautomationframework\\seleniumnunitframework\\obj\\",
         "projectStyle": "PackageReference",
@@ -81,6 +81,10 @@
             "NUnit3TestAdapter": {
               "target": "Package",
               "version": "[4.4.2, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             },
             "Selenium.Support": {
               "target": "Package",
