@@ -6,6 +6,7 @@ C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\sele
 C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\seleniumnunitframework\bin\Debug\net7.0\nunit.engine.api.dll
 C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\seleniumnunitframework\bin\Debug\net7.0\nunit.engine.core.dll
 C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\seleniumnunitframework\bin\Debug\net7.0\testcentric.engine.metadata.dll
+C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\seleniumnunitframework\bin\Debug\net7.0\Env.config
 C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\seleniumnunitframework\bin\Debug\net7.0\selenium-manager\linux\selenium-manager
 C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\seleniumnunitframework\bin\Debug\net7.0\selenium-manager\macos\selenium-manager
 C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\seleniumnunitframework\bin\Debug\net7.0\selenium-manager\windows\selenium-manager.exe
@@ -188,4 +189,3 @@ C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\sele
 C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\seleniumnunitframework\obj\Debug\net7.0\seleniumnunitframework.pdb
 C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\seleniumnunitframework\obj\Debug\net7.0\seleniumnunitframework.genruntimeconfig.cache
 C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\seleniumnunitframework\obj\Debug\net7.0\ref\seleniumnunitframework.dll
-C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\seleniumnunitframework\bin\Debug\net7.0\Env.config

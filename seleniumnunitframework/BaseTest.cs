@@ -14,16 +14,6 @@ namespace seleniumnunitframework
     {
         private ThreadLocal<IWebDriver> ThreadDriver = new ThreadLocal<IWebDriver>();
 
-        private ThreadLocal<WebDriverWait> ThreadWait = new ThreadLocal<WebDriverWait>();
-
-        private ThreadLocal<Actions> ThreadActions = new ThreadLocal<Actions>();
-
-        private ThreadLocal<IJavaScriptExecutor> ThreadJS = new ThreadLocal<IJavaScriptExecutor>();
-
-        //protected Actions act;
-
-        //protected IJavaScriptExecutor jse;
-
         private readonly string BaseUrl = ConfigurationManager.AppSettings["baseurl"];
 
 
@@ -36,16 +26,7 @@ namespace seleniumnunitframework
 
             ManageBrowser(GetDriver());
 
-            ThreadWait.Value = new WebDriverWait(GetDriver(), TimeSpan.FromSeconds(10));
-            ThreadWait.Value.PollingInterval = TimeSpan.FromMilliseconds(250);
-
-            ThreadJS.Value = (IJavaScriptExecutor)GetDriver();
-
-            ThreadActions.Value = new Actions(GetDriver());
-
             GetDriver().Url = BaseUrl;
-
-            WaitForPageLoad();
         }
 
         [TearDown]
@@ -59,9 +40,6 @@ namespace seleniumnunitframework
         public void ThreadCleanup()
         {
             ThreadDriver.Dispose();
-            ThreadWait.Dispose();
-            ThreadActions.Dispose();
-            ThreadJS.Dispose();
         }
 
         public IWebDriver SetDriver(string browserName)
@@ -73,21 +51,22 @@ namespace seleniumnunitframework
                 case "firefox":
                         new WebDriverManager.DriverManager().SetUpDriver(new FirefoxConfig());
                         FirefoxOptions fo = new FirefoxOptions();
-                        fo.AddArguments("-width=1920");
-                        fo.AddArguments("-height=1080");
-                        //fo.AddArgument("--headless");
+                        fo.AddArgument("-width=1920");
+                        fo.AddArgument("-height=1080");
+                        fo.AddArgument("--headless");
                         return driver = new FirefoxDriver(fo);
                 case "edge":
                         new WebDriverManager.DriverManager().SetUpDriver(new EdgeConfig());
                         EdgeOptions eo = new EdgeOptions();
-                        eo.AddArguments("--window-size=1920,1080");
-                        //eo.AddArgument("--headless");
+                        eo.AddArgument("--window-size=1920,1080");
+                        eo.AddArgument("--headless");
                         return driver = new EdgeDriver(eo);
                 default:
                         new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
                         ChromeOptions co = new ChromeOptions();
-                        co.AddArguments("--window-size=1920,1080");
-                        co.AddArgument("--headless");
+                        co.AddArgument("--window-size=1920,1080");
+                        //co.AddArgument("--headless");
+                        co.AddArgument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36");
                         return driver = new ChromeDriver(co);
             }
         }
@@ -97,46 +76,11 @@ namespace seleniumnunitframework
             return ThreadDriver.Value;
         }
 
-        public WebDriverWait Wait()
-        {
-            return ThreadWait.Value;
-        }
-
-        public IJavaScriptExecutor Js()
-        {
-            return ThreadJS.Value;
-        }
-
-        public Actions Act()
-        {
-            return ThreadActions.Value;
-        }
-
         public void ManageBrowser(IWebDriver driver)
         {
             driver.Manage().Window.Maximize();
             driver.Manage().Cookies.DeleteAllCookies();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-        }
-
-        public bool IsPageLoadComplete()
-        {
-            return Js().ExecuteScript("return document.readyState").Equals("complete");
-        }
-
-        public void WaitForPageLoad()
-        {
-            bool pageLoadComplete = false;
-
-            do
-            {
-                pageLoadComplete = IsPageLoadComplete();
-            } while (!pageLoadComplete);
-        }
-
-        public void ScrollToEnd()
-        {
-            Js().ExecuteScript("window.scrollTo(0,document.body.scrollHeight)");
         }
     }
 }
