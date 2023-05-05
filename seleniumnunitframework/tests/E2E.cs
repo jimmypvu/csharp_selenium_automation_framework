@@ -1,5 +1,6 @@
 ﻿using SeleniumExtras.WaitHelpers;
 using SeleniumNUnitFramework.Pages;
+using OpenQA.Selenium;
 
 namespace SeleniumNUnitFramework.Tests
 {
@@ -8,11 +9,10 @@ namespace SeleniumNUnitFramework.Tests
     internal class E2E : BaseTest
     {
         [Test]
-        public void GoToGoogle()
-        {
+        public void GoToGoogle() {
             GoogleHomePage gp = new GoogleHomePage(GetDriver());
             gp.Driver.Url = "https://google.com/";
-            Console.WriteLine(gp.Driver.Url);
+            TestContext.Progress.WriteLine(gp.Driver.Url);
 
             gp.WaitForPageLoad();
             gp.ScrollToEnd();
@@ -27,11 +27,10 @@ namespace SeleniumNUnitFramework.Tests
         }
 
         [Test]
-        public void GoToBing()
-        {
+        public void GoToBing() {
             BingHomePage bp = new BingHomePage(GetDriver());
             bp.Driver.Url = "https://bing.com/";
-            Console.WriteLine(bp.Driver.Url);
+            TestContext.Progress.WriteLine(bp.Driver.Url);
 
             bp.WaitForPageLoad();
             bp.ScrollToEnd();
@@ -46,11 +45,10 @@ namespace SeleniumNUnitFramework.Tests
         }
 
         [Test]
-        public void GoToDDG()
-        {
+        public void GoToDDG() {
             DdgHomePage dp = new DdgHomePage(GetDriver());
             dp.Driver.Url = "https://duckduckgo.com/";
-            Console.WriteLine(dp.Driver.Url);
+            TestContext.Progress.WriteLine(dp.Driver.Url);
 
             //string getNetworkLogsScript = "let performance = window.performance || window.mozPerformance || window.msPerformance || window.webkitPerformance || {}; let network = performance.getEntries() || {}; return network;";
 
@@ -67,11 +65,10 @@ namespace SeleniumNUnitFramework.Tests
         }
 
         [Test]
-        public void GoToYahoo()
-        {
+        public void GoToYahoo() {
             YahooHomePage yp = new YahooHomePage(GetDriver());
             yp.Driver.Url = "https://www.yahoo.com/";
-            Console.WriteLine(yp.Driver.Url);
+            TestContext.Progress.WriteLine(yp.Driver.Url);
 
             yp.WaitForPageLoad();
             yp.ScrollToEnd();
@@ -86,30 +83,62 @@ namespace SeleniumNUnitFramework.Tests
         }
 
         [Test]
-        public void GoToReddit()
-        {
+        public void GoToReddit() {
             RedditHomePage rp = new RedditHomePage(GetDriver());
             rp.Driver.Url = "https://www.reddit.com/";
-            Console.WriteLine(rp.Driver.Url);
+            TestContext.Progress.WriteLine(rp.Driver.Url);
 
             rp.WaitForPageLoad();
-            rp.ScrollToEnd();
-            rp.ScrollToTop();
 
             rp.Wait.Until(ExpectedConditions.UrlContains("reddit"));
             rp.Wait.Until(ExpectedConditions.TitleContains("Reddit"));
-
             rp.Wait.Until(ExpectedConditions.ElementIsVisible(rp.LocSearchBar));
 
             Assert.That(rp.SearchBar.Displayed);
+
+            rp.ScrollToEnd();
+            rp.ScrollToEle(rp.PopularPostsHdr);
+
+            List<IWebElement> titles = rp.WaitForPresenceAndGetAll(rp.LocPostTitles).ToList();
+
+            int count = 1;
+            foreach (var item in titles) {
+                TestContext.Progress.WriteLine($"Item {count} HTML: " + item.GetAttribute("innerHTML"));
+                rp.ScrollToEle(item);
+                Pause(250);
+                TestContext.Progress.WriteLine($"Item {count} text:" + item.Text);
+                count++;
+            }
+
+            TestContext.Progress.WriteLine("Item 6 HTML: " + titles[5].GetAttribute("innerHTML"));
+            TestContext.Progress.WriteLine("Item 6 text: " + titles[5].Text);
+
+            rp.ScrollToTop();
+
+            string sixthPostTitle = titles[5].GetAttribute("innerHTML");
+            rp.ScrollToEleWithText(sixthPostTitle);
+            rp.ScrollToEle(titles[5]);
+            //rp.ScrollBy(0, -150);
+
+            rp.DoesElementHaveAttribute(titles[5].FindElement(By.XPath(".//ancestor::a[@data-click-id='body']")), "data-click-id");
+
+            rp.GetAttributeValueDict(titles[5].FindElement(By.XPath(".//ancestor::a[@data-click-id='body']")));
+
+            //rp.ClickWhenReady(titles[5].FindElement(By.XPath(".//ancestor::a[@data-click-id='body']")));
+
+            titles[5].FindElement(By.XPath(".//ancestor::a[@data-click-id='body']")).Click();
+
+            rp.DoesElementHaveAttribute(rp.WaitForVisAndGet(By.CssSelector("div[slot='title']")), "slot");
+
+            Assert.That(rp.WaitForVisAndGet(By.CssSelector("div[slot='title']")).Displayed);
+            Assert.That(rp.Driver.FindElement(By.CssSelector("div[slot='title']")).Text, Is.EqualTo(sixthPostTitle));
         }
 
         [Test]
-        public void GoToAsk()
-        {
+        public void GoToAsk() {
             AskHomePage ap = new AskHomePage(GetDriver());
             ap.Driver.Url = "https://www.ask.com/";
-            Console.WriteLine(ap.Driver.Url);
+            TestContext.Progress.WriteLine(ap.Driver.Url);
 
             ap.WaitForPageLoad();
             ap.ScrollToEnd();
@@ -124,11 +153,10 @@ namespace SeleniumNUnitFramework.Tests
         }
 
         [Test]
-        public void GoToYoutube()
-        {
+        public void GoToYoutube() {
             YoutubeHomePage yp = new YoutubeHomePage(GetDriver());
             yp.Driver.Url = "https://www.youtube.com/";
-            Console.WriteLine(yp.Driver.Url);
+            TestContext.Progress.WriteLine(yp.Driver.Url);
 
             yp.WaitForPageLoad();
             yp.ScrollToEnd();

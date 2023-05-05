@@ -9,32 +9,27 @@ namespace SeleniumNUnitFramework.Utils
 {
     internal static class BrowserManager
     {
-        public static IWebDriver GetChromeDriver()
-        {
+        public static IWebDriver GetChromeDriver() {
             new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
             ChromeOptions options = GetChromeOptions();
             return new ChromeDriver(options);
         }
 
-        public static IWebDriver GetFirefoxDriver()
-        {
+        public static IWebDriver GetFirefoxDriver() {
             new WebDriverManager.DriverManager().SetUpDriver(new FirefoxConfig());
             FirefoxOptions options = GetFirefoxOptions();
             return new FirefoxDriver(options);
         }
 
-        public static IWebDriver GetEdgeDriver()
-        {
+        public static IWebDriver GetEdgeDriver() {
             new WebDriverManager.DriverManager().SetUpDriver(new EdgeConfig());
             EdgeOptions options = GetEdgeOptions();
             return new EdgeDriver(options);
         }
 
-        private static ChromeOptions GetChromeOptions()
-        {
+        private static ChromeOptions GetChromeOptions() {
             ChromeOptions options = new ChromeOptions();
-            if (ConfigurationManager.AppSettings.Get("headless").Equals("true"))
-            {
+            if (ConfigurationManager.AppSettings.Get("headless").Equals("true")) {
                 options.AddArgument("--headless");
                 options.AddArgument("--window-size=1920,1080");
             }
@@ -49,11 +44,9 @@ namespace SeleniumNUnitFramework.Utils
             return options;
         }
 
-        private static FirefoxOptions GetFirefoxOptions()
-        {
+        private static FirefoxOptions GetFirefoxOptions() {
             FirefoxOptions options = new FirefoxOptions();
-            if (ConfigurationManager.AppSettings.Get("headless").Equals("true"))
-            {
+            if (ConfigurationManager.AppSettings.Get("headless").Equals("true")) {
                 options.AddArgument("-width=1920");
                 options.AddArgument("-height=1080");
                 options.AddArgument("--headless");
@@ -64,11 +57,9 @@ namespace SeleniumNUnitFramework.Utils
             return options;
         }
 
-        private static EdgeOptions GetEdgeOptions()
-        {
+        private static EdgeOptions GetEdgeOptions() {
             EdgeOptions options = new EdgeOptions();
-            if (ConfigurationManager.AppSettings.Get("headless").Equals("true"))
-            {
+            if (ConfigurationManager.AppSettings.Get("headless").Equals("true")) {
                 options.AddArgument("--window-size=1920,1080");
                 options.AddArgument("--headless");
             }

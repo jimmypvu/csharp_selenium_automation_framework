@@ -12,15 +12,15 @@ namespace SeleniumNUnitFramework
 
 
         [OneTimeSetUp]
-        public void SetupThreads() 
-        {
+        public void SetupThreads() {
             ThreadManager.SetupThreads();
         }
 
         [SetUp]
-        public void SetupAndLaunchBrowser()
-        {
+        public void SetupAndLaunchBrowser() {
             ThreadManager.GetSemaphore().WaitOne();
+
+            TestContext.Progress.WriteLine($"Starting test: \"{TestContext.CurrentContext.Test.Name}\"");
 
             string browser = ConfigurationManager.AppSettings.Get("browser");
 
@@ -32,45 +32,48 @@ namespace SeleniumNUnitFramework
         }
 
         [TearDown]
-        public void Teardown() 
-        {
+        public void Teardown() {
+            TestContext.Progress.WriteLine($"\nResult: {TestContext.CurrentContext.Result.Outcome}");
             ThreadDriver.Value.Quit();
             ThreadDriver.Value.Dispose();
             ThreadManager.GetSemaphore().Release();
         }
 
         [OneTimeTearDown]
-        public void ThreadCleanup()
-        {
+        public void ThreadCleanup() {
             ThreadDriver.Dispose();
             ThreadManager.GetSemaphore().Dispose();
         }
 
-        public IWebDriver SetDriver(string browserName)
-        {
+        public IWebDriver SetDriver(string browserName) {
             IWebDriver driver;
 
-            switch (browserName)
-            {
-                case "firefox":
+            switch (browserName) {
+                case "firefox" : 
                         return driver = BrowserManager.GetFirefoxDriver();
-                case "edge":
+                case "edge" :
                         return driver = BrowserManager.GetEdgeDriver();
-                default:
+                default :
                         return driver = BrowserManager.GetChromeDriver();
             }
         }
 
-        public IWebDriver GetDriver()
-        {
+        public IWebDriver GetDriver() {
             return ThreadDriver.Value;
         }
 
-        public void ManageBrowserSettings(IWebDriver driver)
-        {
+        public void ManageBrowserSettings(IWebDriver driver) {
             driver.Manage().Window.Maximize();
             driver.Manage().Cookies.DeleteAllCookies();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+        }
+
+        public void Pause() {
+            Thread.Sleep(2000);
+        }
+
+        public void Pause(int millis) {
+            Thread.Sleep(millis);
         }
     }
 }

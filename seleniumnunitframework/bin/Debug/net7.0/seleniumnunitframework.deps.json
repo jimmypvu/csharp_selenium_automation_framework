@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v7.0": {
-      "seleniumnunitframework/1.0.0": {
+      "SeleniumNUnitFramework/1.0.0": {
         "dependencies": {
           "DotNetSeleniumExtras.PageObjects": "3.11.0",
           "DotNetSeleniumExtras.PageObjects.Core": "4.3.0",
@@ -27,7 +27,7 @@
           "coverlet.collector": "3.2.0"
         },
         "runtime": {
-          "seleniumnunitframework.dll": {}
+          "SeleniumNUnitFramework.dll": {}
         }
       },
       "AngleSharp/0.17.1": {
@@ -2308,7 +2308,7 @@
     }
   },
   "libraries": {
-    "seleniumnunitframework/1.0.0": {
+    "SeleniumNUnitFramework/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

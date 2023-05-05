@@ -4,13 +4,11 @@
     {
         private static Semaphore _semaphore;
 
-        public static void SetupThreads()
-        {
+        public static void SetupThreads() {
             _semaphore = new Semaphore(3, 3);
         }
 
-        public static Semaphore GetSemaphore()
-        {
+        public static Semaphore GetSemaphore() {
             return _semaphore;
         }
     }
