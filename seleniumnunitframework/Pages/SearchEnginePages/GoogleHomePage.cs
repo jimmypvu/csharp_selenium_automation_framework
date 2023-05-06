@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 
-namespace SeleniumNUnitFramework.Pages
+namespace SeleniumNUnitFramework.Pages.SearchEnginePages
 {
     internal class GoogleHomePage : BasePage
     {
@@ -12,6 +12,10 @@ namespace SeleniumNUnitFramework.Pages
 
         public GoogleHomePage(IWebDriver driver) : base(driver) { }
 
+        public GoogleResultsPage SearchForTerm(string searchTerm) {
+            SearchBar.SendKeys(searchTerm + Keys.Enter);
 
+            return new GoogleResultsPage(Driver);
+        }
     }
 }

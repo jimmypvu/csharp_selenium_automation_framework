@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 
-namespace SeleniumNUnitFramework.Pages
+namespace SeleniumNUnitFramework.Pages.SearchEnginePages
 {
     internal class AskHomePage : BasePage
     {

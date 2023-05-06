@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using SeleniumNUnitFramework.Utils;
 using System.Configuration;
 
@@ -13,14 +14,14 @@ namespace SeleniumNUnitFramework
 
         [OneTimeSetUp]
         public void SetupThreads() {
-            ThreadManager.SetupThreads();
+            ThreadManager.SetupThreads();            
         }
 
         [SetUp]
         public void SetupAndLaunchBrowser() {
             ThreadManager.GetSemaphore().WaitOne();
 
-            TestContext.Progress.WriteLine($"Starting test: \"{TestContext.CurrentContext.Test.Name}\"");
+            TestContext.Out.WriteLine($"Starting test: \"{TestContext.CurrentContext.Test.Name}\"\n");
 
             string browser = ConfigurationManager.AppSettings.Get("browser");
 
@@ -33,7 +34,7 @@ namespace SeleniumNUnitFramework
 
         [TearDown]
         public void Teardown() {
-            TestContext.Progress.WriteLine($"\nResult: {TestContext.CurrentContext.Result.Outcome}");
+            TestContext.Out.WriteLine($"\nResult: {TestContext.CurrentContext.Result.Outcome}");
             ThreadDriver.Value.Quit();
             ThreadDriver.Value.Dispose();
             ThreadManager.GetSemaphore().Release();
@@ -66,14 +67,6 @@ namespace SeleniumNUnitFramework
             driver.Manage().Window.Maximize();
             driver.Manage().Cookies.DeleteAllCookies();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-        }
-
-        public void Pause() {
-            Thread.Sleep(2000);
-        }
-
-        public void Pause(int millis) {
-            Thread.Sleep(millis);
         }
     }
 }
