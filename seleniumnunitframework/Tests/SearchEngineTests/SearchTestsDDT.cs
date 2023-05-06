@@ -9,9 +9,11 @@ namespace SeleniumNUnitFramework.Tests.SearchEngineTests
     internal class SearchTestsDDT : BaseTest
     {
         [Test]
-        [TestCase("yeezys")]
         [TestCase("jordans")]
+        [TestCase("yeezys")]
+        [TestCase("vans")]
         [TestCase("chuck taylor low tops")]
+        [TestCase("black chuck taylor high tops mens new size 8.5")]
         public void SearchGoogle(string searchTerm) {
             GoogleHomePage ghp = new GoogleHomePage(GetDriver());
             ghp.Driver.Url = "https://google.com/";
@@ -25,17 +27,24 @@ namespace SeleniumNUnitFramework.Tests.SearchEngineTests
             int num = 1;
             foreach(IWebElement result in results) {
                 if(!searchTerm.Contains(" ")) {
-                    TestContext.Out.WriteLine($"Search result {num} text: {result.Text}");
+                    TestContext.Out.WriteLine($"Text for search result {num}: {result.Text}");
 
                     Assert.That(result.Text.ToLower().Contains(searchTerm) || result.Text.ToLower().Contains(searchTerm.Substring(0, searchTerm.Length - 1)));
                 } else {
-                    string resultBody = result.Text.ToLower();
-                    TestContext.Out.WriteLine($"Search result {num} text: {resultBody}");
+                    TestContext.Out.WriteLine($"Text for search result {num}: {result.Text}");
+
                     string[] searchTerms = searchTerm.Split(" ");
-                    Assert.That(resultBody.Contains(searchTerms[0]) || resultBody.Contains(searchTerms[1]) || resultBody.Contains(searchTerms[2]) || resultBody.Contains(searchTerms[3]));
+
+                    bool resultContainsAnySearchTerms = searchTerms.Any(term => result.Text.ToLower().Contains(term));
+
+                    List<string> matchingTerms = searchTerms.Where(term => result.Text.ToLower().Contains(term) || result.Text.ToLower().Contains(term.Substring(0, term.Length - 1))).ToList();
+
+                    TestContext.Out.WriteLine($"Result contains any search terms? {resultContainsAnySearchTerms}\n" +
+                        $"Matching terms: {String.Join(", ", matchingTerms)}");
+
+                    Assert.That(resultContainsAnySearchTerms, Is.True);
                 }
                 num++;
-                TestContext.Out.WriteLine("Assertion passed, next result");
             }
         }
     }

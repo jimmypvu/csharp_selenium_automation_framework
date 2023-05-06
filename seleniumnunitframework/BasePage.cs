@@ -56,12 +56,12 @@ namespace SeleniumNUnitFramework
 
         public void ScrollToEle(IWebElement element) {
             try {
-                TestContext.Out.WriteLine($"Scrolling element into view: {element.GetAttribute("outerHTML")}");
+                TestContext.Out.WriteLine($"Scrolling element into view: {element.GetAttribute("outerHTML").Substring(0, element.GetAttribute("outerHTML").IndexOf(">") + 1)}");
                 Js.ExecuteScript("arguments[0].scrollIntoView(false, {behavior: \"smooth\"})", element);
                 TestContext.Out.WriteLine("Scrolled to element.");
             }catch (Exception e) {
 
-                TestContext.Out.WriteLine($"Could not find element: {element.GetAttribute("outerHTML")}\n" +
+                TestContext.Out.WriteLine($"Could not find element: {element.GetAttribute("outerHTML").Substring(0, element.GetAttribute("outerHTML").IndexOf(">") + 1)}\n" +
                     $"{e.Message}\n" +
                     $"{e.StackTrace}");
             }
@@ -72,7 +72,7 @@ namespace SeleniumNUnitFramework
                 IWebElement element = Wait.Until(ExpectedConditions.ElementExists(locator));
                 TestContext.Out.WriteLine($"Scrolling to element located by: {locator}");
                 Js.ExecuteScript("arguments[0].scrollIntoView(false, {behavior: \"smooth\"})", element);
-                TestContext.Out.WriteLine($"Scrolled to element: {element.GetAttribute("outerHTML")}");
+                TestContext.Out.WriteLine($"Scrolled to element: {element.GetAttribute("outerHTML").Substring(0, element.GetAttribute("outerHTML").IndexOf(">") + 1)}");
             } catch(Exception e) {
 
                 TestContext.Out.WriteLine($"Could not find element located by: {locator}\n" +
@@ -212,8 +212,81 @@ namespace SeleniumNUnitFramework
                 TestContext.Out.WriteLine($"Waiting to right click element located by: {locator}");
                 IWebElement element = Wait.Until(ExpectedConditions.ElementToBeClickable(locator));
                 string elementHTML = element.GetAttribute("outerHTML").Substring(0, element.GetAttribute("outerHTML").IndexOf(">") + 1);
-                Act.
+                Act.ContextClick(element).Perform();
                 TestContext.Out.WriteLine($"Right clicked on element: {elementHTML}");
+            } catch(Exception e) {
+                TestContext.Out.WriteLine("Element not clicked (unclickable or click intercepted).\n" +
+                    $"{e.Message}\n" +
+                    $"{e.StackTrace}");
+            }
+        }
+
+        public void RightClick(IWebElement element) {
+            try {
+                string elementHTML = element.GetAttribute("outerHTML").Substring(0, element.GetAttribute("outerHTML").IndexOf(">") + 1);
+                TestContext.Out.WriteLine($"Waiting to right click element: {elementHTML}");
+                Wait.Until(ExpectedConditions.ElementToBeClickable(element));
+                Act.ContextClick(element).Perform();
+                TestContext.Out.WriteLine($"Right clicked on element: {elementHTML}");
+            } catch(Exception e) {
+                TestContext.Out.WriteLine("Element not clicked (unclickable or click intercepted).\n" +
+                    $"{e.Message}\n" +
+                    $"{e.StackTrace}");
+            }
+        }
+
+        public void DoubleClick(By locator) {
+            try {
+                TestContext.Out.WriteLine($"Waiting to doubleclick element located by: {locator}");
+                IWebElement element = Wait.Until(ExpectedConditions.ElementToBeClickable(locator));
+                string elementHTML = element.GetAttribute("outerHTML").Substring(0, element.GetAttribute("outerHTML").IndexOf(">") + 1);
+                Act.DoubleClick(element).Perform();
+                TestContext.Out.WriteLine($"Doubleclicked on element: {elementHTML}");
+            } catch(Exception e) {
+                TestContext.Out.WriteLine("Element not clicked (unclickable or click intercepted).\n" +
+                    $"{e.Message}\n" +
+                    $"{e.StackTrace}");
+            }
+        }
+
+        public void DoubleClick(IWebElement element) {
+            try {
+                string elementHTML = element.GetAttribute("outerHTML").Substring(0, element.GetAttribute("outerHTML").IndexOf(">") + 1);
+                TestContext.Out.WriteLine($"Waiting to doubleclick element: {elementHTML}");
+                Wait.Until(ExpectedConditions.ElementToBeClickable(element));
+                Act.DoubleClick(element).Perform();
+                TestContext.Out.WriteLine($"Doubleclicked on element: {elementHTML}");
+            } catch(Exception e) {
+                TestContext.Out.WriteLine("Element not clicked (unclickable or click intercepted).\n" +
+                    $"{e.Message}\n" +
+                    $"{e.StackTrace}");
+            }
+        }
+
+        public void HoverOn(By locator) {
+            try {
+                TestContext.Out.WriteLine($"Mousing over element located by: {locator}");
+                IWebElement element = Wait.Until(ExpectedConditions.ElementIsVisible(locator));
+                string elementHTML = element.GetAttribute("outerHTML").Substring(0, element.GetAttribute("outerHTML").IndexOf(">") + 1);
+                Act.MoveToElement(element).Perform();
+                TestContext.Out.WriteLine($"Hovered mouse over element: {elementHTML}");
+            } catch(Exception e) {
+                TestContext.Out.WriteLine("Could not mouseover element.\n" +
+                    $"{e.Message}\n" +
+                    $"{e.StackTrace}");
+            }
+        }
+
+        public void HoverOn(IWebElement element) {
+            try {
+                string elementHTML = element.GetAttribute("outerHTML").Substring(0, element.GetAttribute("outerHTML").IndexOf(">") + 1);
+                TestContext.Out.WriteLine($"Mousing over element: {elementHTML}");
+                Act.MoveToElement(element).Perform();
+                TestContext.Out.WriteLine($"Hovered mouse over element: {elementHTML}");
+            } catch(Exception e) {
+                TestContext.Out.WriteLine("Could not mouseover element.\n" +
+                    $"{e.Message}\n" +
+                    $"{e.StackTrace}");
             }
         }
 

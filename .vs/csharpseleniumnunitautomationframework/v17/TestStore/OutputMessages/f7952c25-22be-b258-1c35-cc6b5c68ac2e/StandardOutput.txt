@@ -1,0 +1,94 @@
+Starting test: "GoToReddit"
+
+https://www.reddit.com/
+Waiting for page load.
+Page load complete.
+Waiting for visibility of element located by: By.CssSelector: input#header-search-bar
+Element is visible: <input type="search" class="_1K7ubH9z5v9E6C19j2fjQU" id="header-search-bar" name="q" placeholder="Search Reddit" value="">
+Scrolled to end of page.
+Scrolling element into view: <div class="_3ioMyxiI-wWgZFqBDVBh6r _1fauFKjg428h9E1m4B2Vr-">
+Scrolled to element.
+Waiting for presence of all elements located by: By.XPath: //h3[@class='_eYtD2XCVieq6emjKBH3m']
+Elements are present on DOM (14 elements)
+Item 1 innerHTML: My wife says this is so messy ”she can’t breathe”. Do you agree?
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 1 text: My wife says this is so messy ”she can’t breathe”. Do you agree?
+Item 2 innerHTML: Go beyond the headlines. Discover the wellness, home, and lifestyle content you can only find at The Washington Post—now for just $1/week.
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 2 text: Go beyond the headlines. Discover the wellness, home, and lifestyle content you can only find at The Washington Post—now for just $1/week.
+Item 3 innerHTML: Principal’s response to a student unaliving themselves.
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 3 text: Principal’s response to a student unaliving themselves.
+Item 4 innerHTML: This is the biggest elephant I've seen in my life. Imagine drinking a bucket of water in only 4 seconds!
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 4 text: This is the biggest elephant I've seen in my life. Imagine drinking a bucket of water in only 4 seconds!
+Item 5 innerHTML: When he first put up the red flag I was prepared to cringe
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 5 text: When he first put up the red flag I was prepared to cringe
+Item 6 innerHTML: Former guy must be crapping his depends right now 🤣
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 6 text: Former guy must be crapping his depends right now 🤣
+Item 7 innerHTML: 6-year-old shot to death while playing in front yard of Kansas home: "Somebody knows who did this"
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 7 text: 6-year-old shot to death while playing in front yard of Kansas home: "Somebody knows who did this"
+Item 8 innerHTML: Just a reminder that George cut this scene out, just because he wanted closeups on the actors…
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 8 text: Just a reminder that George cut this scene out, just because he wanted closeups on the actors…
+Item 9 innerHTML: What is the one thing you do on Friday to start your weekend properly?
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 9 text: What is the one thing you do on Friday to start your weekend properly?
+Item 10 innerHTML: Girl pepper sprays teacher because he took her phone from her in Antioch TN. This same teacher two months ago got punched in the face by a different student for taking a kids phone cheating on a test with it. 
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 10 text: Girl pepper sprays teacher because he took her phone from her in Antioch TN. This same teacher two months ago got punched in the face by a different student for taking a kids phone cheating on a test with it.
+Item 11 innerHTML: Mirror Hand Syndrome
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 11 text: Mirror Hand Syndrome
+Item 12 innerHTML: American work value makes me sick
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 12 text: American work value makes me sick
+Item 13 innerHTML: World Rugby try of the year in 2019
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 13 text: World Rugby try of the year in 2019
+Item 14 innerHTML: 12 ways to feel better in 2023, one month at a time. Subscribe to the L.A. Times.
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 14 text: 12 ways to feel better in 2023, one month at a time. Subscribe to the L.A. Times.
+Item 4 innerHTML: This is the biggest elephant I've seen in my life. Imagine drinking a bucket of water in only 4 seconds!
+Scrolled to top of page.
+Scrolling to element containing text: 'This is the biggest elephant I've seen in my life. Imagine drinking a bucket of water in only 4 seconds!'
+Scrolled to element with text: <h3 class="_eYtD2XCVieq6emjKBH3m">This is the biggest elephant I've seen in my life. Imagine drinking a bucket of water in only 4 seconds!</h3>
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 4 text: This is the biggest elephant I've seen in my life. Imagine drinking a bucket of water in only 4 seconds!
+Scrolled down by -150 pixels, right by 0 pixels
+Element attributes for <a data-click-id="body" class="SQnoC3ObvgnGjWt90zD9Z _2INHSNB8V5eaWp4P0rY_mE" href="/r/Damnthatsinteresting/comments/13916jd/this_is_the_biggest_elephant_ive_seen_in_my_life/">:
+data-click-id, class, href
+Does element <a data-click-id="body" class="SQnoC3ObvgnGjWt90zD9Z _2INHSNB8V5eaWp4P0rY_mE" href="/r/Damnthatsinteresting/comments/13916jd/this_is_the_biggest_elephant_ive_seen_in_my_life/"> have attribute "data-click-id": True
+Attribute-Value pairs for <a data-click-id="body" class="SQnoC3ObvgnGjWt90zD9Z _2INHSNB8V5eaWp4P0rY_mE" href="/r/Damnthatsinteresting/comments/13916jd/this_is_the_biggest_elephant_ive_seen_in_my_life/">:
+data-click-id : "body"
+class : "SQnoC3ObvgnGjWt90zD9Z _2INHSNB8V5eaWp4P0rY_mE"
+href : "/r/Damnthatsinteresting/comments/13916jd/this_is_the_biggest_elephant_ive_seen_in_my_life/"
+Waiting to click element: <a data-click-id="body" class="SQnoC3ObvgnGjWt90zD9Z _2INHSNB8V5eaWp4P0rY_mE" href="/r/Damnthatsinteresting/comments/13916jd/this_is_the_biggest_elephant_ive_seen_in_my_life/">
+Clicked on element: <a data-click-id="body" class="SQnoC3ObvgnGjWt90zD9Z _2INHSNB8V5eaWp4P0rY_mE" href="/r/Damnthatsinteresting/comments/13916jd/this_is_the_biggest_elephant_ive_seen_in_my_life/">
+Waiting for visibility of element located by: By.CssSelector: div[slot='title']
+Element is visible: <div id="post-title-t3_13916jd" slot="title" class="font-bold text-neutral-content-strong text-18  mb-xs px-md xs:px-0 xs:mb-md ">
+Element attributes for <div id="post-title-t3_13916jd" slot="title" class="font-bold text-neutral-content-strong text-18  mb-xs px-md xs:px-0 xs:mb-md ">:
+id, slot, class
+Does element <div id="post-title-t3_13916jd" slot="title" class="font-bold text-neutral-content-strong text-18  mb-xs px-md xs:px-0 xs:mb-md "> have attribute "slot": True
+Waiting for visibility of element located by: By.CssSelector: div[slot='title']
+Element is visible: <div id="post-title-t3_13916jd" slot="title" class="font-bold text-neutral-content-strong text-18  mb-xs px-md xs:px-0 xs:mb-md ">
+
+Result: Passed
