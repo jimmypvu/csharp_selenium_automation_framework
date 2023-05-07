@@ -189,3 +189,5 @@ C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\sele
 C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\seleniumnunitframework\obj\Debug\net7.0\seleniumnunitframework.pdb
 C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\seleniumnunitframework\obj\Debug\net7.0\seleniumnunitframework.genruntimeconfig.cache
 C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\seleniumnunitframework\obj\Debug\net7.0\ref\seleniumnunitframework.dll
+C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\seleniumnunitframework\bin\Debug\net7.0\TestData\ProductsTestData.json
+C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\seleniumnunitframework\bin\Debug\net7.0\TestData\SearchTermsTestData.json

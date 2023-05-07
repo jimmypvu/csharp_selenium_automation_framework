@@ -12,7 +12,7 @@ namespace SeleniumNUnitFramework.Pages.SearchEnginePages
 
         public GoogleHomePage(IWebDriver driver) : base(driver) { }
 
-        public GoogleResultsPage SearchForTerm(string searchTerm) {
+        public GoogleResultsPage SearchFor(string searchTerm) {
             SearchBar.SendKeys(searchTerm + Keys.Enter);
 
             return new GoogleResultsPage(Driver);

@@ -6,7 +6,6 @@ using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 using SeleniumExtras.WaitHelpers;
 using System.Text.RegularExpressions;
-using System.Xml.Linq;
 
 namespace SeleniumNUnitFramework
 {
@@ -110,6 +109,18 @@ namespace SeleniumNUnitFramework
             TestContext.Out.WriteLine("Scrolled to top of page.");
         }
 
+        public IWebElement FindEle(By locator) {
+            try {
+                TestContext.Out.WriteLine($"Finding element located by: {locator}");
+                IWebElement element = Driver.FindElement(locator);
+                TestContext.Out.WriteLine($"Found element: {element.GetAttribute("outerHTML").Substring(0, element.GetAttribute("outerHTML").IndexOf(">") + 1)}");
+                return element;
+            } catch (Exception ex) {
+                TestContext.Out.WriteLine(ex);
+            }
+            return null;
+        }
+
         public IWebElement WaitForVis(By locator) {
             try {
                 TestContext.Out.WriteLine($"Waiting for visibility of element located by: {locator}");
@@ -166,9 +177,9 @@ namespace SeleniumNUnitFramework
             return null;
         }
 
-        public IWebElement WaitForClick(By locator) {
+        public IWebElement WaitForClickable(By locator) {
             try {
-                TestContext.Out.WriteLine($"Waiting for element at {locator} to become clickable.");
+                TestContext.Out.WriteLine($"Waiting for clickability of element located by: {locator}");
                 IWebElement element = Wait.Until(ExpectedConditions.ElementToBeClickable(locator));
                 TestContext.Out.WriteLine($"Element became clickable: {element.GetAttribute("outerHTML").Substring(0, element.GetAttribute("outerHTML").IndexOf(">") + 1)}");
                 return element;
@@ -182,11 +193,8 @@ namespace SeleniumNUnitFramework
 
         public void ClickWhenReady(By locator) {
             try {
-                TestContext.Out.WriteLine($"Waiting to click element located by: {locator}");
-                IWebElement element = Wait.Until(ExpectedConditions.ElementToBeClickable(locator));
-                string elementHTML = element.GetAttribute("outerHTML").Substring(0, element.GetAttribute("outerHTML").IndexOf(">") + 1);
-                element.Click();
-                TestContext.Out.WriteLine($"Clicked on element: {elementHTML}");
+                WaitForClickable(locator).Click();
+                TestContext.Out.WriteLine("Clicked on element.");
             } catch(Exception e) {
                 TestContext.Out.WriteLine("Element not clicked (unclickable or click intercepted).\n" +
                     $"{e.Message}\n" +
@@ -199,7 +207,7 @@ namespace SeleniumNUnitFramework
                 string elementHTML = element.GetAttribute("outerHTML").Substring(0, element.GetAttribute("outerHTML").IndexOf(">")+1);
                 TestContext.Out.WriteLine($"Waiting to click element: {elementHTML}");
                 Wait.Until(ExpectedConditions.ElementToBeClickable(element)).Click();
-                TestContext.Out.WriteLine($"Clicked on element: {elementHTML}");
+                TestContext.Out.WriteLine("Clicked on element.");
             } catch(Exception e) {
                 TestContext.Out.WriteLine("Element not clicked (unclickable or click intercepted).\n" +
                     $"{e.Message}\n" +
@@ -227,7 +235,7 @@ namespace SeleniumNUnitFramework
                 TestContext.Out.WriteLine($"Waiting to right click element: {elementHTML}");
                 Wait.Until(ExpectedConditions.ElementToBeClickable(element));
                 Act.ContextClick(element).Perform();
-                TestContext.Out.WriteLine($"Right clicked on element: {elementHTML}");
+                TestContext.Out.WriteLine("Right clicked on element.");
             } catch(Exception e) {
                 TestContext.Out.WriteLine("Element not clicked (unclickable or click intercepted).\n" +
                     $"{e.Message}\n" +
@@ -255,7 +263,7 @@ namespace SeleniumNUnitFramework
                 TestContext.Out.WriteLine($"Waiting to doubleclick element: {elementHTML}");
                 Wait.Until(ExpectedConditions.ElementToBeClickable(element));
                 Act.DoubleClick(element).Perform();
-                TestContext.Out.WriteLine($"Doubleclicked on element: {elementHTML}");
+                TestContext.Out.WriteLine("Doubleclicked on element.");
             } catch(Exception e) {
                 TestContext.Out.WriteLine("Element not clicked (unclickable or click intercepted).\n" +
                     $"{e.Message}\n" +
@@ -282,7 +290,7 @@ namespace SeleniumNUnitFramework
                 string elementHTML = element.GetAttribute("outerHTML").Substring(0, element.GetAttribute("outerHTML").IndexOf(">") + 1);
                 TestContext.Out.WriteLine($"Mousing over element: {elementHTML}");
                 Act.MoveToElement(element).Perform();
-                TestContext.Out.WriteLine($"Hovered mouse over element: {elementHTML}");
+                TestContext.Out.WriteLine("Hovered mouse over element.");
             } catch(Exception e) {
                 TestContext.Out.WriteLine("Could not mouseover element.\n" +
                     $"{e.Message}\n" +

@@ -7,8 +7,8 @@ namespace SeleniumNUnitFramework.Pages.SearchEnginePages
     internal class GoogleResultsPage : BasePage
     {
         [FindsBy(How.CssSelector, "div#result-stats")]
-        public IWebElement SearchResultStats;
-        public By LocSearchResultStats = By.CssSelector("div#result-stats");
+        public IWebElement SearchResultsStats;
+        public By LocSearchResultsStats = By.CssSelector("div#result-stats");
 
         [FindsBy(How.CssSelector, "div[class='VwiC3b yXK7lf MUxGbd yDYNvb lyLwlc lEBKkf']")]
         public IList<IWebElement> SearchResultsDescriptions;

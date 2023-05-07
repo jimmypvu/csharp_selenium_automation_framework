@@ -36,10 +36,18 @@
     <None Update="Env.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="TestData\ProductsTestData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\SearchTermsTestData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
 	<Copy SourceFiles="Env.config" DestinationFiles="$(OutDir)\testhost.dll.config" />
   </Target>
+
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
 </Project>

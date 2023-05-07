@@ -67,5 +67,13 @@ namespace SeleniumNUnitFramework
             driver.Manage().Cookies.DeleteAllCookies();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
         }
+
+        public static JsonReader GetJson() {
+            return new JsonReader();
+        }
+
+        public static JsonReader GetJson(string jsonFilePath) {
+            return new JsonReader(jsonFilePath);
+        }
     }
 }

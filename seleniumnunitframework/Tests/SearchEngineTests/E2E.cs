@@ -2,11 +2,13 @@
 using SeleniumNUnitFramework.Pages.SearchEnginePages;
 using OpenQA.Selenium;
 using System.Configuration;
+using OpenQA.Selenium.Support.UI;
+using System.Text.RegularExpressions;
 
 namespace SeleniumNUnitFramework.Tests.SearchEngineTests
 {
     [TestFixture]
-    [Parallelizable(ParallelScope.All)]
+    [Parallelizable(ParallelScope.Children)]
     internal class E2E : BaseTest
     {
         [Test, Retry(2)]
@@ -181,6 +183,55 @@ namespace SeleniumNUnitFramework.Tests.SearchEngineTests
             yp.Wait.Until(ExpectedConditions.ElementIsVisible(yp.LocSearchBar));
 
             Assert.That(yp.SearchBar.Displayed);
+        }
+
+        [Test, Retry(2)]
+        [TestCase("https://www.google.com/")]
+        [TestCase("https://www.bing.com/")]
+        public void GoToPage(string url) {
+            GetDriver().Navigate().GoToUrl(url);
+
+            TestContext.Out.WriteLine(GetDriver().Url);
+
+            Assert.That(GetDriver().Url.Contains(url));
+        }
+
+        [Test, Description("Add items to cart")]
+        public void AddItemsToCart() {
+            GetDriver().Url = "https://rahulshettyacademy.com/loginpagePractise/";
+
+            WebDriverWait wait = new WebDriverWait(GetDriver(), TimeSpan.FromSeconds(10));
+            wait.PollingInterval = TimeSpan.FromMilliseconds(250);
+
+            GetDriver().FindElement(By.Id("username")).SendKeys("rahulshettyacademy");
+            GetDriver().FindElement(By.Id("password")).SendKeys("learning" + Keys.Enter);
+
+            string[] productsToAdd = { "iphone X", "Samsung Note 8", "Blackberry" };
+
+            List<IWebElement> productCards = wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.XPath("//div[@class='card h-100']"))).ToList();
+
+            foreach(var item in productCards) {
+                string itemTitle = item.FindElement(By.XPath(".//h4[@class='card-title']/a")).Text;
+                //string itemName = item.FindElement(By.CssSelector("h4.card-title")).Text;
+
+                if(productsToAdd.Contains(itemTitle)) {
+                    item.FindElement(By.CssSelector("div.card-footer button")).Click();
+                }
+            }
+
+            IWebElement checkoutBtn = GetDriver().FindElement(By.CssSelector("[class='nav-link btn btn-primary']"));
+
+            string itemCountBadgeText = Regex.Replace(checkoutBtn.Text, @"[^0-9]", "");
+            int itemCount = int.Parse(itemCountBadgeText);
+
+            Assert.That(itemCount, Is.EqualTo(productsToAdd.Length));
+            checkoutBtn.Click();
+
+            IList<IWebElement> cartItems = wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.CssSelector("h4.media-heading")));
+
+            foreach(var item in cartItems) {
+                Assert.That(productsToAdd.Contains(item.Text));
+            }
         }
     }
 }

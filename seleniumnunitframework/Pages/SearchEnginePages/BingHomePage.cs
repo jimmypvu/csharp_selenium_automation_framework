@@ -11,5 +11,13 @@ namespace SeleniumNUnitFramework.Pages.SearchEnginePages
 
 
         public BingHomePage(IWebDriver driver) : base(driver) { }
+
+        public BingResultsPage SearchFor(string searchTerm) {
+            ClickWhenReady(LocSearchBar);
+            SearchBar.SendKeys(searchTerm);
+            SearchBar.SendKeys(Keys.Enter);
+
+            return new BingResultsPage(Driver);
+        }
     }
 }

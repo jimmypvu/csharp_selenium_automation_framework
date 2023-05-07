@@ -1,0 +1,98 @@
+Starting test: "GoToReddit"
+
+https://www.reddit.com/
+Waiting for page load.
+Page load complete.
+Waiting for visibility of element located by: By.CssSelector: input#header-search-bar
+Element is visible: <input type="search" class="_1K7ubH9z5v9E6C19j2fjQU" id="header-search-bar" name="q" placeholder="Search Reddit" value="">
+Scrolled to end of page.
+Scrolling element into view: <div class="_3ioMyxiI-wWgZFqBDVBh6r _1fauFKjg428h9E1m4B2Vr-">
+Scrolled to element.
+Waiting for presence of all elements located by: By.XPath: //h3[@class='_eYtD2XCVieq6emjKBH3m']
+Elements are present on DOM (15 elements)
+Item 1 innerHTML: Meanwhile in London
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 1 text: Meanwhile in London
+Item 2 innerHTML: Explosions, crushed buildings and flood fears. Mammoth Lakes thrown into chaos by snowfall. Subscribe to the L.A. Times
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 2 text: Explosions, crushed buildings and flood fears. Mammoth Lakes thrown into chaos by snowfall. Subscribe to the L.A. Times
+Item 3 innerHTML: Oldie
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 3 text: Oldie
+Item 4 innerHTML: Charles III crowned King
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 4 text: Charles III crowned King
+Item 5 innerHTML: What's a deleted scene from a movie where the decision to leave that scene on the cutting room floor was absolutely the right call?
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 5 text: What's a deleted scene from a movie where the decision to leave that scene on the cutting room floor was absolutely the right call?
+Item 6 innerHTML: Walmart employees accuse woman of stealing, go through all her bags and find out everything was paid for.
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 6 text: Walmart employees accuse woman of stealing, go through all her bags and find out everything was paid for.
+Item 7 innerHTML: A Canadian goose that comes back year after year to lay her eggs in my neighbor's plant pot [OC]
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 7 text: A Canadian goose that comes back year after year to lay her eggs in my neighbor's plant pot [OC]
+Item 8 innerHTML: Active shooter at a mall in Allen, Texas; Multiple victims reported
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 8 text: Active shooter at a mall in Allen, Texas; Multiple victims reported
+Item 9 innerHTML: Not your average news report
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 9 text: Not your average news report
+Item 10 innerHTML: Talk about work, in the work. Share your PDF, get feedback, and track progress. Acrobat's got it.
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 10 text: Talk about work, in the work. Share your PDF, get feedback, and track progress. Acrobat's got it.
+Item 11 innerHTML: A van contained protest material has been confiscated at King’s coronation.
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 11 text: A van contained protest material has been confiscated at King’s coronation.
+Item 12 innerHTML: Enough is enough. Clarence Thomas must resign — or be impeached.
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 12 text: Enough is enough. Clarence Thomas must resign — or be impeached.
+Item 13 innerHTML: My niece was fired because a grown legally gambled.
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 13 text: My niece was fired because a grown legally gambled.
+Item 14 innerHTML: This lady repeating "you're grouned" in multiple accents 
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 14 text: This lady repeating "you're grouned" in multiple accents
+Item 15 innerHTML: Fort Blunder.
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 15 text: Fort Blunder.
+Item 4 innerHTML: Charles III crowned King
+Scrolled to top of page.
+Scrolling to element containing text: 'Charles III crowned King'
+Scrolled to element with text: <div class="_2Jjv0TAohMSydVpAgyhjhA">Charles III crowned King</div>
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 4 text: Charles III crowned King
+Scrolled down by -150 pixels, right by 0 pixels
+Element attributes for <a data-click-id="body" class="SQnoC3ObvgnGjWt90zD9Z _2INHSNB8V5eaWp4P0rY_mE" href="/r/europe/comments/139jvc1/charles_iii_crowned_king/">:
+data-click-id, class, href
+Does element <a data-click-id="body" class="SQnoC3ObvgnGjWt90zD9Z _2INHSNB8V5eaWp4P0rY_mE" href="/r/europe/comments/139jvc1/charles_iii_crowned_king/"> have attribute "data-click-id": True
+Attribute-Value pairs for <a data-click-id="body" class="SQnoC3ObvgnGjWt90zD9Z _2INHSNB8V5eaWp4P0rY_mE" href="/r/europe/comments/139jvc1/charles_iii_crowned_king/">:
+data-click-id : "body"
+class : "SQnoC3ObvgnGjWt90zD9Z _2INHSNB8V5eaWp4P0rY_mE"
+href : "/r/europe/comments/139jvc1/charles_iii_crowned_king/"
+Waiting to click element: <a data-click-id="body" class="SQnoC3ObvgnGjWt90zD9Z _2INHSNB8V5eaWp4P0rY_mE" href="/r/europe/comments/139jvc1/charles_iii_crowned_king/">
+Clicked on element.
+Waiting for visibility of element located by: By.CssSelector: div[slot='title']
+Element is visible: <div id="post-title-t3_139jvc1" slot="title" class="font-bold text-neutral-content-strong text-24 xs:text-32  mb-xs px-md xs:px-0 xs:mb-md ">
+Element attributes for <div id="post-title-t3_139jvc1" slot="title" class="font-bold text-neutral-content-strong text-24 xs:text-32  mb-xs px-md xs:px-0 xs:mb-md ">:
+id, slot, class
+Does element <div id="post-title-t3_139jvc1" slot="title" class="font-bold text-neutral-content-strong text-24 xs:text-32  mb-xs px-md xs:px-0 xs:mb-md "> have attribute "slot": True
+Waiting for visibility of element located by: By.CssSelector: div[slot='title']
+Element is visible: <div id="post-title-t3_139jvc1" slot="title" class="font-bold text-neutral-content-strong text-24 xs:text-32  mb-xs px-md xs:px-0 xs:mb-md ">
+
+Result: Passed
