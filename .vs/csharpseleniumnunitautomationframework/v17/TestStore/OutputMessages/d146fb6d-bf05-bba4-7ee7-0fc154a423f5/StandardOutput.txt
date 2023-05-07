@@ -1,0 +1,82 @@
+Starting test: "GoToReddit"
+
+https://www.reddit.com/
+Waiting for page load.
+Page load complete.
+Waiting for visibility of element located by: By.CssSelector: input#header-search-bar
+Element is visible: <input type="search" class="_1K7ubH9z5v9E6C19j2fjQU" id="header-search-bar" name="q" placeholder="Search Reddit" value="">
+Scrolled to end of page.
+Scrolling element into view: <div class="_3ioMyxiI-wWgZFqBDVBh6r _1fauFKjg428h9E1m4B2Vr-">
+Scrolled to element.
+Waiting for presence of all elements located by: By.XPath: //h3[@class='_eYtD2XCVieq6emjKBH3m']
+Elements are present on DOM (11 elements)
+Item 1 innerHTML: Active shooter at a mall in Allen, Texas; Multiple victims reported
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 1 text: Active shooter at a mall in Allen, Texas; Multiple victims reported
+Item 2 innerHTML: The 16 best places to indulge in caviar, for $12 and up. Subscribe to the L.A. Times.
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 2 text: The 16 best places to indulge in caviar, for $12 and up. Subscribe to the L.A. Times.
+Item 3 innerHTML: Following facial reconstruction surgery, the face swells excessively. This swelling can last upwards of a year or more. Here’s me a few days vs 15 months post-operation.
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 3 text: Following facial reconstruction surgery, the face swells excessively. This swelling can last upwards of a year or more. Here’s me a few days vs 15 months post-operation.
+Item 4 innerHTML: ...to lip sync on the kitchen counter
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 4 text: ...to lip sync on the kitchen counter
+Item 5 innerHTML: Meanwhile in London
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 5 text: Meanwhile in London
+Item 6 innerHTML: Oldie
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 6 text: Oldie
+Item 7 innerHTML: What's a deleted scene from a movie where the decision to leave that scene on the cutting room floor was absolutely the right call?
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 7 text: What's a deleted scene from a movie where the decision to leave that scene on the cutting room floor was absolutely the right call?
+Item 8 innerHTML: I got a new eyeball today!
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 8 text: I got a new eyeball today!
+Item 9 innerHTML: DRINK YOUR MEALS
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 9 text: DRINK YOUR MEALS
+Item 10 innerHTML: Wife hosted a friend's bridal shower, she cancelled not once, but twice.
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 10 text: Wife hosted a friend's bridal shower, she cancelled not once, but twice.
+Item 11 innerHTML: A van contained protest material has been confiscated at King’s coronation.
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 11 text: A van contained protest material has been confiscated at King’s coronation.
+Item 4 innerHTML: ...to lip sync on the kitchen counter
+Scrolled to top of page.
+Scrolling to element containing text: '...to lip sync on the kitchen counter'
+Scrolled to element with text: <h3 class="_eYtD2XCVieq6emjKBH3m">...to lip sync on the kitchen counter</h3>
+Scrolling element into view: <h3 class="_eYtD2XCVieq6emjKBH3m">
+Scrolled to element.
+Item 4 text: ...to lip sync on the kitchen counter
+Scrolled down by -150 pixels, right by 0 pixels
+Element attributes for <a data-click-id="body" class="SQnoC3ObvgnGjWt90zD9Z _2INHSNB8V5eaWp4P0rY_mE" href="/r/therewasanattempt/comments/13a5ydf/to_lip_sync_on_the_kitchen_counter/">:
+data-click-id, class, href
+Does element <a data-click-id="body" class="SQnoC3ObvgnGjWt90zD9Z _2INHSNB8V5eaWp4P0rY_mE" href="/r/therewasanattempt/comments/13a5ydf/to_lip_sync_on_the_kitchen_counter/"> have attribute "data-click-id": True
+Attribute-Value pairs for <a data-click-id="body" class="SQnoC3ObvgnGjWt90zD9Z _2INHSNB8V5eaWp4P0rY_mE" href="/r/therewasanattempt/comments/13a5ydf/to_lip_sync_on_the_kitchen_counter/">:
+data-click-id : "body"
+class : "SQnoC3ObvgnGjWt90zD9Z _2INHSNB8V5eaWp4P0rY_mE"
+href : "/r/therewasanattempt/comments/13a5ydf/to_lip_sync_on_the_kitchen_counter/"
+Waiting to click element: <a data-click-id="body" class="SQnoC3ObvgnGjWt90zD9Z _2INHSNB8V5eaWp4P0rY_mE" href="/r/therewasanattempt/comments/13a5ydf/to_lip_sync_on_the_kitchen_counter/">
+Clicked on element.
+Waiting for visibility of element located by: By.CssSelector: div[slot='title']
+Element is visible: <div id="post-title-t3_13a5ydf" slot="title" class="font-bold text-neutral-content-strong text-24 xs:text-32  mb-xs px-md xs:px-0 xs:mb-md ">
+Element attributes for <div id="post-title-t3_13a5ydf" slot="title" class="font-bold text-neutral-content-strong text-24 xs:text-32  mb-xs px-md xs:px-0 xs:mb-md ">:
+id, slot, class
+Does element <div id="post-title-t3_13a5ydf" slot="title" class="font-bold text-neutral-content-strong text-24 xs:text-32  mb-xs px-md xs:px-0 xs:mb-md "> have attribute "slot": True
+Waiting for visibility of element located by: By.CssSelector: div[slot='title']
+Element is visible: <div id="post-title-t3_13a5ydf" slot="title" class="font-bold text-neutral-content-strong text-24 xs:text-32  mb-xs px-md xs:px-0 xs:mb-md ">
+
+Result: Passed

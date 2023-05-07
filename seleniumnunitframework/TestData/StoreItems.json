@@ -1,0 +1,53 @@
+[
+  {
+    "id": "34l234h32l4h",
+    "name": "thing1",
+    "retail_price": 10.49,
+    "suppliers": [
+      {
+        "manufacturer_1": {
+          "sid": 124145213,
+          "supplier_price": 5.32,
+          "location": "townsville, oh"
+        }
+      },
+      {
+        "manufacturer_2": {
+          "sid": 21414214,
+          "supplier_price": 5.92,
+          "location": "citysville, ny"
+        }
+      }
+    ],
+    "department": "electronics"
+  },
+  {
+    "id": "71024blkad",
+    "name": "thing2",
+    "retail_price": 30.99,
+    "suppliers": [
+      {
+        "manufacturer_3": {
+          "sid": 4981240709,
+          "supplier_price": 10.79,
+          "location": "villagesburg, pa"
+        }
+      },
+      {
+        "manufacturer_4": {
+          "sid": 651131354,
+          "supplier_price": 11.52,
+          "location": "suburbsship, nj"
+        }
+      },
+      {
+        "manufacturer_5": {
+          "sid": 46540548965,
+          "supplier_price": 12.15,
+          "location": "new los francisco, ca"
+        }
+      }
+    ],
+    "department": "audio"
+  }
+]

@@ -1,0 +1,5 @@
+C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\TLSConsole\obj\Debug\net7.0\TLSConsole.csproj.AssemblyReference.cache
+C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\TLSConsole\obj\Debug\net7.0\TLSConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\TLSConsole\obj\Debug\net7.0\TLSConsole.AssemblyInfoInputs.cache
+C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\TLSConsole\obj\Debug\net7.0\TLSConsole.AssemblyInfo.cs
+C:\Users\jimmy\OneDrive\Desktop\code\csharpseleniumnunitautomationframework\TLSConsole\obj\Debug\net7.0\TLSConsole.csproj.CoreCompileInputs.cache

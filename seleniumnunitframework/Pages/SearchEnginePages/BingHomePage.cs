@@ -7,15 +7,19 @@ namespace SeleniumNUnitFramework.Pages.SearchEnginePages
     {
         [FindsBy(How.CssSelector, "textarea[id='sb_form_q']")]
         public IWebElement SearchBar;
+
         public By LocSearchBar = By.CssSelector("textarea[id='sb_form_q']");
+
+        public By LocSearchBtn = By.CssSelector("label#search_icon svg");
 
 
         public BingHomePage(IWebDriver driver) : base(driver) { }
 
         public BingResultsPage SearchFor(string searchTerm) {
-            ClickWhenReady(LocSearchBar);
-            SearchBar.SendKeys(searchTerm);
-            SearchBar.SendKeys(Keys.Enter);
+            IWebElement searchBar = WaitForVis(LocSearchBar);
+            ClickWhenReady(searchBar);
+            EnterText(searchBar, searchTerm);
+            ClickWhenReady(LocSearchBtn);
 
             return new BingResultsPage(Driver);
         }

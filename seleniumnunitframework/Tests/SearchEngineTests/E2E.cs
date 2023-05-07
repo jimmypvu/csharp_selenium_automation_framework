@@ -9,11 +9,9 @@ namespace SeleniumNUnitFramework.Tests.SearchEngineTests
 {
     [TestFixture]
     [Parallelizable(ParallelScope.Children)]
-    internal class E2E : BaseTest
-    {
+    internal class E2E : BaseTest {
         [Test, Retry(2)]
-        public void GoToGoogle()
-        {
+        public void GoToGoogle() {
             GoogleHomePage gp = new GoogleHomePage(GetDriver());
             gp.Driver.Url = "https://google.com/";
             TestContext.Out.WriteLine(gp.Driver.Url);
@@ -31,8 +29,7 @@ namespace SeleniumNUnitFramework.Tests.SearchEngineTests
         }
 
         [Test, Retry(2)]
-        public void GoToBing()
-        {
+        public void GoToBing() {
             BingHomePage bp = new BingHomePage(GetDriver());
             bp.Driver.Url = "https://bing.com/";
             TestContext.Out.WriteLine(bp.Driver.Url);
@@ -50,8 +47,7 @@ namespace SeleniumNUnitFramework.Tests.SearchEngineTests
         }
 
         [Test, Retry(2)]
-        public void GoToDDG()
-        {
+        public void GoToDDG() {
             if(ConfigurationManager.AppSettings.Get("headless").Equals("true")) {
 
                 TestContext.Out.WriteLine("Running in headless mode, test skipped (blocked user agent or headers).");
@@ -77,8 +73,7 @@ namespace SeleniumNUnitFramework.Tests.SearchEngineTests
         }
 
         [Test, Retry(2)]
-        public void GoToYahoo()
-        {
+        public void GoToYahoo() {
             YahooHomePage yp = new YahooHomePage(GetDriver());
             yp.Driver.Url = "https://www.yahoo.com/";
             TestContext.Out.WriteLine(yp.Driver.Url);
@@ -97,7 +92,7 @@ namespace SeleniumNUnitFramework.Tests.SearchEngineTests
 
         [Test, Retry(2)]
         public void GoToReddit() {
-            Assert.DoesNotThrow(()=> {
+            Assert.DoesNotThrow(() => {
                 RedditHomePage rp = new RedditHomePage(GetDriver());
                 rp.Driver.Url = "https://www.reddit.com/";
                 TestContext.Out.WriteLine(rp.Driver.Url);
@@ -144,12 +139,11 @@ namespace SeleniumNUnitFramework.Tests.SearchEngineTests
 
                 Assert.That(rp.WaitForVis(By.CssSelector("div[slot='title']")).Displayed);
                 Assert.That(rp.Driver.FindElement(By.CssSelector("div[slot='title']")).Text, Is.EqualTo(fourthPostTitle));
-            });    
+            });
         }
 
         [Test, Retry(2)]
-        public void GoToAsk()
-        {
+        public void GoToAsk() {
             AskHomePage ap = new AskHomePage(GetDriver());
             ap.Driver.Url = "https://www.ask.com/";
             TestContext.Out.WriteLine(ap.Driver.Url);
@@ -167,8 +161,7 @@ namespace SeleniumNUnitFramework.Tests.SearchEngineTests
         }
 
         [Test, Retry(2)]
-        public void GoToYoutube()
-        {
+        public void GoToYoutube() {
             YoutubeHomePage yp = new YoutubeHomePage(GetDriver());
             yp.Driver.Url = "https://www.youtube.com/";
             TestContext.Out.WriteLine(yp.Driver.Url);
@@ -196,8 +189,9 @@ namespace SeleniumNUnitFramework.Tests.SearchEngineTests
             Assert.That(GetDriver().Url.Contains(url));
         }
 
-        [Test, Description("Add items to cart")]
-        public void AddItemsToCart() {
+        //[Test, Description("Add items to cart"), TestCase(new object[] {"iphone X", "Samsung Note 8", "Blackberry"})]
+        [Test, Description("Add items to cart"), TestCaseSource(nameof(GetProductsData))]
+        public void AddItemsToCart(object[] productsToAdd) {
             GetDriver().Url = "https://rahulshettyacademy.com/loginpagePractise/";
 
             WebDriverWait wait = new WebDriverWait(GetDriver(), TimeSpan.FromSeconds(10));
@@ -206,9 +200,9 @@ namespace SeleniumNUnitFramework.Tests.SearchEngineTests
             GetDriver().FindElement(By.Id("username")).SendKeys("rahulshettyacademy");
             GetDriver().FindElement(By.Id("password")).SendKeys("learning" + Keys.Enter);
 
-            string[] productsToAdd = { "iphone X", "Samsung Note 8", "Blackberry" };
-
             List<IWebElement> productCards = wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.XPath("//div[@class='card h-100']"))).ToList();
+
+            //string[] productsToAdd = { "iphone X", "Samsung Note 8", "Blackberry" };
 
             foreach(var item in productCards) {
                 string itemTitle = item.FindElement(By.XPath(".//h4[@class='card-title']/a")).Text;
@@ -233,5 +227,13 @@ namespace SeleniumNUnitFramework.Tests.SearchEngineTests
                 Assert.That(productsToAdd.Contains(item.Text));
             }
         }
+
+        public static object[] GetProductsData =
+        {
+            GetJson("ProductsData.json").GetDataObj("products"),
+            GetJson("ProductsData.json").GetDataObj("products2"),
+            GetJson("ProductsData.json").GetDataObj("products3"),
+            GetJson("ProductsData.json").GetDataObj("products4")
+        };
     }
 }

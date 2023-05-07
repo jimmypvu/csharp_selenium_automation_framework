@@ -9,7 +9,7 @@ namespace SeleniumNUnitFramework.Tests.SearchEngineTests
     [Parallelizable(ParallelScope.Children)]
     internal class SearchTestsDDT : BaseTest
     {
-        [Test, TestCaseSource("GetTestData_SearchTerms")]
+        [Test, TestCaseSource(nameof(GetSearchTermsDataV2))]
         public void SearchGoogle(string searchTerm) {
             GoogleHomePage ghp = new GoogleHomePage(GetDriver());
             ghp.Driver.Url = "https://google.com/";
@@ -31,8 +31,10 @@ namespace SeleniumNUnitFramework.Tests.SearchEngineTests
 
                     string[] searchTerms = searchTerm.Split(" ");
 
+                    //does result body contain any of the search terms?
                     bool resultContainsAnySearchTerms = searchTerms.Any(term => result.Text.ToLower().Contains(term));
 
+                    //which search terms does the body contain?
                     List<string> matchingTerms = searchTerms.Where(term => result.Text.ToLower().Contains(term) || result.Text.ToLower().Contains(term.Substring(0, term.Length - 1))).ToList();
 
                     TestContext.Out.WriteLine($"Result contains any search terms? {resultContainsAnySearchTerms}\n" +
@@ -80,7 +82,7 @@ namespace SeleniumNUnitFramework.Tests.SearchEngineTests
             }
         }
 
-        [Test, TestCaseSource("GetTestData_SearchTerms"), Retry(3)]
+        [Test, TestCaseSource(nameof(GetSearchTermsDataV2)), Retry(2)]
         public void SearchBing(string searchTerm) {
             Assert.DoesNotThrow(() => {
                 BingHomePage bhp = new BingHomePage(GetDriver());
@@ -88,9 +90,9 @@ namespace SeleniumNUnitFramework.Tests.SearchEngineTests
 
                 BingResultsPage brp = bhp.SearchFor($"{searchTerm}");
 
-                brp.WaitForPresence(brp.LocResultsPageLogoLink);
+                brp.WaitForPresence(brp.LocResultsPageLogo);
 
-                IList<IWebElement> results = brp.WaitForPresenceOfAll(brp.LocSearchResultsDescriptions);
+                IList<IWebElement> results = brp.Wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(brp.LocSearchResultsDescriptions));
 
                 int num = 1;
                 foreach(IWebElement result in results) {
@@ -103,8 +105,10 @@ namespace SeleniumNUnitFramework.Tests.SearchEngineTests
 
                         string[] searchTerms = searchTerm.Split(" ");
 
+                        //does result body contain any of the search terms?
                         bool resultContainsAnySearchTerms = searchTerms.Any(term => result.Text.ToLower().Contains(term) || result.Text.ToLower().Contains(term.Substring(0, term.Length - 1)) || result.Text.ToLower().Contains("shoe") || result.Text.ToLower().Contains("sneakers") || result.Text.ToLower().Contains("shop"));
 
+                        //which search terms does the body contain?
                         List<string> matchingTerms = searchTerms.Where(term => result.Text.ToLower().Contains(term) || result.Text.ToLower().Contains(term.Substring(0, term.Length - 1))).ToList();
 
                         TestContext.Out.WriteLine($"Result text contains any search terms? {resultContainsAnySearchTerms}\n" +
@@ -117,20 +121,19 @@ namespace SeleniumNUnitFramework.Tests.SearchEngineTests
             });
         }
 
-        public static IEnumerable<TestCaseData> GetTestData_SearchTerms() {
+        public static IEnumerable<TestCaseData> GetSearchTermsData() {
             yield return new TestCaseData(GetJson().GetData("searchTerm1"));
             yield return new TestCaseData(GetJson().GetData("searchTerm2"));
-            yield return new TestCaseData(GetJson("SearchTermsTestData.json").GetData("searchTerm3"));
+            yield return new TestCaseData(GetJson("SearchTermsData.json").GetData("searchTerm3"));
             yield return new TestCaseData("chuck taylor low tops");
             yield return new TestCaseData("black chuck taylor high tops mens new size 8.5");
         }
 
-        //public static IEnumerable<TestCaseData> GetTestData_SearchTerms() {
-        //    yield return new TestCaseData("gucci");
-        //    yield return new TestCaseData("yeezys");
-        //    yield return new TestCaseData("vans");
-        //    yield return new TestCaseData("chuck taylor low tops");
-        //    yield return new TestCaseData("black chuck taylor high tops mens new size 8.5");
-        //}
+        public static IEnumerable<TestCaseData> GetSearchTermsDataV2() {
+            object[] searchTerms = GetJson().GetDataArray("searchTerms");
+            foreach(var term in searchTerms) {
+                yield return new TestCaseData(term);
+            }
+        }
     }
 }

@@ -46,10 +46,8 @@ namespace SeleniumNUnitFramework
                 } while(!pageLoadComplete);
 
                 TestContext.Out.WriteLine("Page load complete.");
-            } catch(Exception ex) {
-
-                TestContext.Out.WriteLine($"Page load failed.\n" +
-                    $"{ex.Message}");
+            } catch(Exception e) {
+                TestContext.Out.WriteLine($"Page load failed.\n{e}");
             }
         }
 
@@ -58,11 +56,8 @@ namespace SeleniumNUnitFramework
                 TestContext.Out.WriteLine($"Scrolling element into view: {element.GetAttribute("outerHTML").Substring(0, element.GetAttribute("outerHTML").IndexOf(">") + 1)}");
                 Js.ExecuteScript("arguments[0].scrollIntoView(false, {behavior: \"smooth\"})", element);
                 TestContext.Out.WriteLine("Scrolled to element.");
-            }catch (Exception e) {
-
-                TestContext.Out.WriteLine($"Could not find element: {element.GetAttribute("outerHTML").Substring(0, element.GetAttribute("outerHTML").IndexOf(">") + 1)}\n" +
-                    $"{e.Message}\n" +
-                    $"{e.StackTrace}");
+            } catch(Exception e) {
+                TestContext.Out.WriteLine($"Could not find element.\n{e}");
             }
         }
 
@@ -73,10 +68,7 @@ namespace SeleniumNUnitFramework
                 Js.ExecuteScript("arguments[0].scrollIntoView(false, {behavior: \"smooth\"})", element);
                 TestContext.Out.WriteLine($"Scrolled to element: {element.GetAttribute("outerHTML").Substring(0, element.GetAttribute("outerHTML").IndexOf(">") + 1)}");
             } catch(Exception e) {
-
-                TestContext.Out.WriteLine($"Could not find element located by: {locator}\n" +
-                    $"{e.Message}\n" +
-                    $"{e.StackTrace}");
+                TestContext.Out.WriteLine($"Could not find element.\n{e}");
             }
         }
 
@@ -87,10 +79,7 @@ namespace SeleniumNUnitFramework
                 Js.ExecuteScript("arguments[0].scrollIntoView(false, {behavior: \"smooth\"})", element);
                 TestContext.Out.WriteLine($"Scrolled to element with text: {element.GetAttribute("outerHTML")}");
             } catch (Exception e) {
-
-                TestContext.Out.WriteLine($"Could not find element containing text: '{text}'" +
-                    $"\n{e.Message}" +
-                    $"\n{e.StackTrace}");
+                TestContext.Out.WriteLine($"Could not find element containing text: '{text}'\n{e}");
             }
         }
 
@@ -115,8 +104,8 @@ namespace SeleniumNUnitFramework
                 IWebElement element = Driver.FindElement(locator);
                 TestContext.Out.WriteLine($"Found element: {element.GetAttribute("outerHTML").Substring(0, element.GetAttribute("outerHTML").IndexOf(">") + 1)}");
                 return element;
-            } catch (Exception ex) {
-                TestContext.Out.WriteLine(ex);
+            } catch (Exception e) {
+                TestContext.Out.WriteLine($"Could not find element.\n{e}");
             }
             return null;
         }
@@ -128,9 +117,7 @@ namespace SeleniumNUnitFramework
                 TestContext.Out.WriteLine($"Element is visible: {element.GetAttribute("outerHTML").Substring(0, element.GetAttribute("outerHTML").IndexOf(">") + 1)}");
                 return element;
             }catch (Exception e) {
-                TestContext.Out.WriteLine($"Could not find elemented located by: {locator}\n" +
-                    $"{e.Message}\n" +
-                    $"{e.StackTrace}");
+                TestContext.Out.WriteLine($"Could not find element.\n{e}");
             }
             return null;
         }
@@ -142,9 +129,7 @@ namespace SeleniumNUnitFramework
                 TestContext.Out.WriteLine($"Elements are visible ({elements.Count} elements).");
                 return elements;
             } catch (Exception e) {
-                TestContext.Out.WriteLine($"Timed out waiting for visibility.\n" +
-                    $"{e.Message}\n" +
-                    $"{e.StackTrace}");
+                TestContext.Out.WriteLine($"Timed out waiting for visibility.\n{e}");
             }
             return null;
         }
@@ -156,9 +141,7 @@ namespace SeleniumNUnitFramework
                 TestContext.Out.WriteLine($"Element is present on DOM: {element.GetAttribute("outerHTML").Substring(0, element.GetAttribute("outerHTML").IndexOf(">") + 1)}");
                 return element;
             } catch(Exception e) {
-                TestContext.Out.WriteLine($"Could not find elemented located by: {locator}\n" +
-                    $"{e.Message}\n" +
-                    $"{e.StackTrace}");
+                TestContext.Out.WriteLine($"Could not find element.\n{e}");
             }
             return null;
         }
@@ -170,9 +153,7 @@ namespace SeleniumNUnitFramework
                 TestContext.Out.WriteLine($"Elements are present on DOM ({elements.Count} elements)");
                 return elements;
             } catch(Exception e) {
-                TestContext.Out.WriteLine($"Could not find elements.\n" +
-                    $"{e.Message}\n" +
-                    $"{e.StackTrace}");
+                TestContext.Out.WriteLine($"Could not find elements.\n{e}");
             }
             return null;
         }
@@ -184,9 +165,7 @@ namespace SeleniumNUnitFramework
                 TestContext.Out.WriteLine($"Element became clickable: {element.GetAttribute("outerHTML").Substring(0, element.GetAttribute("outerHTML").IndexOf(">") + 1)}");
                 return element;
             } catch (Exception e) {
-                TestContext.Out.WriteLine("Element did not become clickable.\n" +
-                    $"{e.Message}\n" +
-                    $"{e.StackTrace}");
+                TestContext.Out.WriteLine($"Element did not become clickable.\n{e}");
             }
             return null;
         }
@@ -196,9 +175,7 @@ namespace SeleniumNUnitFramework
                 WaitForClickable(locator).Click();
                 TestContext.Out.WriteLine("Clicked on element.");
             } catch(Exception e) {
-                TestContext.Out.WriteLine("Element not clicked (unclickable or click intercepted).\n" +
-                    $"{e.Message}\n" +
-                    $"{e.StackTrace}");
+                TestContext.Out.WriteLine($"Element not clicked (unclickable or click intercepted).\n{e}");
             }
         }
 
@@ -209,9 +186,7 @@ namespace SeleniumNUnitFramework
                 Wait.Until(ExpectedConditions.ElementToBeClickable(element)).Click();
                 TestContext.Out.WriteLine("Clicked on element.");
             } catch(Exception e) {
-                TestContext.Out.WriteLine("Element not clicked (unclickable or click intercepted).\n" +
-                    $"{e.Message}\n" +
-                    $"{e.StackTrace}");
+                TestContext.Out.WriteLine($"Element not clicked (unclickable or click intercepted).\n{e}");
             }
         }
 
@@ -223,9 +198,7 @@ namespace SeleniumNUnitFramework
                 Act.ContextClick(element).Perform();
                 TestContext.Out.WriteLine($"Right clicked on element: {elementHTML}");
             } catch(Exception e) {
-                TestContext.Out.WriteLine("Element not clicked (unclickable or click intercepted).\n" +
-                    $"{e.Message}\n" +
-                    $"{e.StackTrace}");
+                TestContext.Out.WriteLine($"Element not clicked (unclickable or click intercepted).\n{e}");
             }
         }
 
@@ -237,9 +210,7 @@ namespace SeleniumNUnitFramework
                 Act.ContextClick(element).Perform();
                 TestContext.Out.WriteLine("Right clicked on element.");
             } catch(Exception e) {
-                TestContext.Out.WriteLine("Element not clicked (unclickable or click intercepted).\n" +
-                    $"{e.Message}\n" +
-                    $"{e.StackTrace}");
+                TestContext.Out.WriteLine($"Element not clicked (unclickable or click intercepted).\n{e}");
             }
         }
 
@@ -251,9 +222,7 @@ namespace SeleniumNUnitFramework
                 Act.DoubleClick(element).Perform();
                 TestContext.Out.WriteLine($"Doubleclicked on element: {elementHTML}");
             } catch(Exception e) {
-                TestContext.Out.WriteLine("Element not clicked (unclickable or click intercepted).\n" +
-                    $"{e.Message}\n" +
-                    $"{e.StackTrace}");
+                TestContext.Out.WriteLine($"Element not clicked (unclickable or click intercepted).\n{e}");
             }
         }
 
@@ -265,9 +234,7 @@ namespace SeleniumNUnitFramework
                 Act.DoubleClick(element).Perform();
                 TestContext.Out.WriteLine("Doubleclicked on element.");
             } catch(Exception e) {
-                TestContext.Out.WriteLine("Element not clicked (unclickable or click intercepted).\n" +
-                    $"{e.Message}\n" +
-                    $"{e.StackTrace}");
+                TestContext.Out.WriteLine($"Element not clicked (unclickable or click intercepted).\n{e}");
             }
         }
 
@@ -279,9 +246,7 @@ namespace SeleniumNUnitFramework
                 Act.MoveToElement(element).Perform();
                 TestContext.Out.WriteLine($"Hovered mouse over element: {elementHTML}");
             } catch(Exception e) {
-                TestContext.Out.WriteLine("Could not mouseover element.\n" +
-                    $"{e.Message}\n" +
-                    $"{e.StackTrace}");
+                TestContext.Out.WriteLine($"Could not mouseover element.\n{e}");
             }
         }
 
@@ -292,9 +257,17 @@ namespace SeleniumNUnitFramework
                 Act.MoveToElement(element).Perform();
                 TestContext.Out.WriteLine("Hovered mouse over element.");
             } catch(Exception e) {
-                TestContext.Out.WriteLine("Could not mouseover element.\n" +
-                    $"{e.Message}\n" +
-                    $"{e.StackTrace}");
+                TestContext.Out.WriteLine($"Could not mouseover element.\n{e}");
+            }
+        }
+
+        public void EnterText(IWebElement element, string text) {
+            try {
+                TestContext.Out.WriteLine($"Entering text '{text}' to element {element.GetAttribute("outerHTML").Substring(0, element.GetAttribute("outerHTML").IndexOf(">") + 1)}");
+                element.SendKeys(text);
+                TestContext.Out.WriteLine($"Input element value: {element.GetAttribute("value")}");
+            } catch(Exception e) {
+                TestContext.Out.WriteLine($"Text not entered.\n{e}");
             }
         }
 
@@ -319,10 +292,9 @@ namespace SeleniumNUnitFramework
 
                 return attributes;
             } catch(Exception e) {
-                TestContext.Out.WriteLine($"{e.Message}\n" +
-                    $"{e.StackTrace}");
+                TestContext.Out.WriteLine($"{e}");
             }
-            return new string[0];
+            return null;
         }
 
         public Dictionary<string, string> GetAttributeValueDict(IWebElement element) {
@@ -351,10 +323,9 @@ namespace SeleniumNUnitFramework
 
                 return attributeValuePairs;
             } catch(Exception e) {
-                TestContext.Out.WriteLine($"{e.Message}\n" +
-                    $"{e.StackTrace}");
+                TestContext.Out.WriteLine($"{e}");
             }
-            return new Dictionary<string, string>();
+            return null;
         }
 
         public void Pause() {

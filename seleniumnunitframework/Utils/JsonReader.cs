@@ -4,31 +4,25 @@ namespace SeleniumNUnitFramework.Utils
 {
     internal class JsonReader
     {
-        private string _jsonFilePath = "TestData/SearchTermsTestData.json";
+        private string _jsonFilePath = AppDomain.CurrentDomain.BaseDirectory + "\\TestData\\SearchTermsData.json";
 
 
         public JsonReader() { }
 
         public JsonReader(string jsonFileName) { 
-            this._jsonFilePath = $"TestData/{jsonFileName}";
+            this._jsonFilePath = AppDomain.CurrentDomain.BaseDirectory + $"\\TestData\\{jsonFileName}";
         }
 
         public string GetData(string jsonKey) {
             string jsonString = File.ReadAllText(this._jsonFilePath);
-            JToken jsonObj = JToken.Parse(jsonString);
-            string jsonValue = jsonObj.SelectToken(jsonKey).Value<string>();
-            Console.WriteLine(jsonValue);
-            return jsonValue;
+            JToken jsonObject = JToken.Parse(jsonString);
+            return jsonObject.SelectToken(jsonKey).Value<string>();
         }
 
-        public string[] GetDataArray(string jsonKey) {
+        public object[] GetDataObj(string jsonKey) {
             string jsonString = File.ReadAllText(this._jsonFilePath);
-            JToken jsonObj = JToken.Parse(jsonString);
-            string[] jsonValues = jsonObj.SelectToken(jsonKey).Values<string>().ToArray();
-            foreach(string value in jsonValues) {
-                Console.WriteLine(value);
-            }
-            return jsonValues;
+            JToken jsonObject = JToken.Parse(jsonString);
+            return jsonObject.SelectToken(jsonKey).Values<object>().ToArray();
         }
     }
 }
